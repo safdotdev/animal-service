@@ -32,3 +32,4 @@ bethtest/
 *bethtest*
 coverage
 spec/examples.txt
+db/animal_db.sqlite3
