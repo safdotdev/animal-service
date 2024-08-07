@@ -1,0 +1,25 @@
+name: Test
+
+on: [push, pull_request]
+env:
+  GIT_COMMIT: ${{ github.sha }}
+  GIT_REF: ${{ github.ref }}
+  GIT_BRANCH: ${{ github.head_ref || github.ref_name }}
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby_version: ["3.3"]
+        os: ["ubuntu-latest","windows-latest","macos-latest"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@master
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+      - run: "bundle install"
+      - run: bundle exec rake
+        if: matrix.os != 'windows-latest'
+      - run: "ruby.exe -S pact verify --pact-helper ./spec/service_consumers/pact_helper.rb"
+        if: matrix.os == 'windows-latest'
