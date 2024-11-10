@@ -9,6 +9,7 @@ group :development, :test do
   gem 'sbmt-pact', git: 'https://github.com/YOU54F/sbmt-pact.git', branch: 'feat/pact-ruby'
   gem 'webmock'
   gem "rspec-mocks"
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 end
 
 gem 'rake'
