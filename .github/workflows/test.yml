@@ -20,6 +20,7 @@ jobs:
           ruby-version: ${{ matrix.ruby_version }}
       - run: "bundle install"
       - run: bundle exec rake
-      - run: bundle exec rake verify:pact
+        if: matrix.os != 'windows-latest'
       - run: "ruby.exe -S pact verify --pact-helper ./spec/service_consumers/pact_helper.rb"
         if: matrix.os == 'windows-latest'
+      - run: bundle exec rake verify:pact
