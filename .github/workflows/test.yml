@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         ruby_version: ["3.3"]
-        os: ["ubuntu-latest","windows-latest","macos-latest"]
+        os: ["ubuntu-latest","windows-latest","macos-13","macos-latest"]
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@master
@@ -20,6 +20,6 @@ jobs:
           ruby-version: ${{ matrix.ruby_version }}
       - run: "bundle install"
       - run: bundle exec rake
-        if: matrix.os != 'windows-latest'
+      - run: bundle exec rake verify:pact
       - run: "ruby.exe -S pact verify --pact-helper ./spec/service_consumers/pact_helper.rb"
         if: matrix.os == 'windows-latest'
