@@ -10,7 +10,7 @@ end
 
 require 'rspec/core/rake_task'
 
-RSpec::Core::RakeTask.new('verify:pact') do |task|
+RSpec::Core::RakeTask.new('pact:v2:verify') do |task|
   task.pattern = 'spec/pact/consumers/*_spec.rb'
   task.rspec_opts = ['-t pact']
 end
