@@ -15,6 +15,10 @@ end
 gem 'rake'
 gem 'rack'
 gem 'json'
-gem 'sqlite3'
+if Gem.win_platform?
+  gem 'sqlite3', force_ruby_platform: true
+else
+  gem 'sqlite3'
+end
 gem 'sequel'
 gem 'sinatra'
