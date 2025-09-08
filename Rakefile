@@ -1,5 +1,7 @@
 $: << File.join(File.dirname(__FILE__), 'lib')
 
+ENV['PACT_RUBY_V2_ENABLE'] = 'true'
+
 require 'pact/tasks'
 
 task default: 'pact:verify'
@@ -12,5 +14,5 @@ require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new('pact:v2:verify') do |task|
   task.pattern = 'spec/pact/consumers/*_spec.rb'
-  task.rspec_opts = ['-t pact']
+  task.rspec_opts = ['-t pact_v2']
 end

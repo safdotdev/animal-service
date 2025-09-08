@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'sbmt/pact/rspec'
+require 'pact/v2/rspec'
 require 'pact/ffi'
 require 'sequel'
 require 'animal_service/api'
@@ -9,7 +9,7 @@ require 'animal_service/animal_repository'
 require 'rspec/mocks'
 include RSpec::Mocks::ExampleMethods
 
-RSpec.describe 'Verify consumers for Bar Provider', :pact do
+RSpec.describe 'Verify consumers for Bar Provider', :pact_v2 do
   http_pact_provider 'Animal Service'
   # puts pact_config.inspect
   pact_config.instance_variable_set(:@app, AnimalService::Api)

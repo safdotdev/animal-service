@@ -8,7 +8,7 @@ group :development, :test do
   if ENV['X_PACT_DEVELOPMENT']
     gem 'pact', path: '../pact-ruby'
   else
-    gem 'pact', git: 'https://github.com/safdotdev/pact-ruby.git', branch: 'sbmt-pact'
+    gem 'pact', git: 'https://github.com/safdotdev/pact-ruby.git', branch: 'feat/pact-ruby-v2-conditional-install'
   end
   gem 'webmock'
   gem "rspec-mocks"
