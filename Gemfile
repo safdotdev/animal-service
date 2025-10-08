@@ -7,8 +7,12 @@ group :development, :test do
 end
 
 gem 'rake'
-gem 'rack', '~> 2.0'
-gem 'json', '~>1.8'
-gem 'sqlite3'
+gem 'rack'
+gem 'json'
+if Gem.win_platform?
+  gem 'sqlite3', force_ruby_platform: true
+else
+  gem 'sqlite3'
+end
 gem 'sequel'
 gem 'sinatra'
