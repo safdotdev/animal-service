@@ -2,8 +2,16 @@ source 'https://rubygems.org'
 
 group :development, :test do
   gem 'rspec'
-  gem 'pact'
   gem 'pry'
+
+  gem 'combustion'
+  if ENV['X_PACT_DEVELOPMENT']
+    gem 'pact', path: '../pact-ruby'
+  else
+    gem 'pact', git: 'https://github.com/pact-foundation/pact-ruby.git', branch: 'feat/v2'
+  end
+  gem 'webmock'
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 end
 
 gem 'rake'
