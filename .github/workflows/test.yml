@@ -25,3 +25,4 @@ jobs:
       - run: "bundle install"
       - run: bundle exec rake
         if: matrix.os != 'windows-latest'
+      - run: bundle exec rake pact:v2:verify
